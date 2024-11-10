@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class DialogueTrigger : MonoBehaviour
@@ -8,7 +9,7 @@ public class DialogueTrigger : MonoBehaviour
     public Transform target; // Персонаж, над которым будет отображаться текст
     public Vector3 offset = new Vector3(0, 2, 0); // Смещение текста над головой персонажа
     private float typingSpeed; // Скорость печатания
-    private float delayClean; 
+    private float delayClean;
 
     public TextMeshProUGUI textComponent;
     private string fullText; // Полный текст, который нужно вывести
@@ -18,8 +19,6 @@ public class DialogueTrigger : MonoBehaviour
     {
         fullText = textComponent.text; // Сохраняем полный текст
         textComponent.text = ""; // Очищаем текст перед печатанием
-
-        StartCoroutine(TypeText()); // Запускаем печатание текста
     }
 
     private void FixedUpdate()
@@ -65,11 +64,13 @@ public class DialogueTrigger : MonoBehaviour
         }
         textComponent.text = fullText.Substring(0, 0);// gavno kod :(
 
+        gameObject.SetActive(false);
     }
 
-    
+
     public void SetText(string newText, float typingSpeed = 0.05f, float delayClean = 1f)
     {
+        gameObject.SetActive(true);
         this.typingSpeed = typingSpeed;
         this.delayClean = delayClean;
         this.fullText = newText; // Обновляем полный текст

@@ -22,12 +22,7 @@ public class DialogueStart : MonoBehaviour
         switch (collision.transform.tag)
         {
             case "houseEnter":
-                if (isTyping)
-                    return;
-                isTyping = true;
-                print('1');
-                dt.SetText("Click E to enter home", delayClean: 5f);
-                isTyping = false;
+                houseEnter();
 
                 break;
         }
@@ -38,8 +33,9 @@ public class DialogueStart : MonoBehaviour
         switch (collision.transform.tag)
         {
             case "houseEnter":
-                houseEnter();
-                print(isTyping);
+                if (Input.GetKey(KeyCode.E))
+                    SceneController.instance.NextScene();
+                print("Enter");
             break;
         }
 
@@ -47,13 +43,12 @@ public class DialogueStart : MonoBehaviour
 
     private void houseEnter()
     {
+
         if (isTyping)
             return;
         isTyping = true;
 
-
-        if (Input.GetKeyUp(KeyCode.E))
-            dt.SetText("Whoosh");
+        dt.SetText("Click E to enter home", delayClean: 5f);
 
         isTyping = false;
     }

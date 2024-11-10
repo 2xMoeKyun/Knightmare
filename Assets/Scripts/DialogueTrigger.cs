@@ -11,7 +11,6 @@ public class DialogueTrigger : MonoBehaviour
 
     public TextMeshProUGUI textComponent;
     private string fullText; // Полный текст, который нужно вывести
-    private string currentText = ""; // Текст, который постепенно появится
 
     private void Start()
     {
@@ -34,7 +33,6 @@ public class DialogueTrigger : MonoBehaviour
     private IEnumerator TypeText()
     {
         // Постепенно добавляем текст
-        string tmp = string.Empty;
         for (int i = 0; i < fullText.Length; i++)
         {
             if (fullText[i] == '<')
@@ -75,10 +73,9 @@ public class DialogueTrigger : MonoBehaviour
     {
         this.typingSpeed = typingSpeed;
         this.delayClean = delayClean;
+        this.fullText = newText; // Обновляем полный текст
 
         StopAllCoroutines(); // Останавливаем текущую анимацию печатания
-        fullText = newText; // Обновляем полный текст
-        currentText = ""; // Сбрасываем текущий текст
         StartCoroutine(TypeText()); // Перезапускаем печатание с новым текстом
     }
 }

@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator animator;
-    public SpriteRenderer spriteRenderer;
 
     public float moveSpeed = 5f;
     private Vector2 moveInput;
@@ -27,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         rb.linearVelocityX = moveInput.x * moveSpeed;
         animator.SetBool("Move", Convert.ToBoolean(moveInput.x));
-        spriteRenderer.flipX = CheckTurn();
+        CheckTurn();
 
     }
 

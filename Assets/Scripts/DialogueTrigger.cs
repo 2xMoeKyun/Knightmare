@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
+
 public class DialogueTrigger : MonoBehaviour
 {
     public Transform target; // Персонаж, над которым будет отображаться текст
@@ -11,6 +12,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public TextMeshProUGUI textComponent;
     private string fullText; // Полный текст, который нужно вывести
+
 
     private void Start()
     {
@@ -65,10 +67,7 @@ public class DialogueTrigger : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// For "enter" use \n
-    /// For coloring use html, example: <color=#FF0000>Red</color>
-    /// </summary>
+    
     public void SetText(string newText, float typingSpeed = 0.05f, float delayClean = 1f)
     {
         this.typingSpeed = typingSpeed;
@@ -78,4 +77,7 @@ public class DialogueTrigger : MonoBehaviour
         StopAllCoroutines(); // Останавливаем текущую анимацию печатания
         StartCoroutine(TypeText()); // Перезапускаем печатание с новым текстом
     }
+
+ 
+
 }

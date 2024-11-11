@@ -6,6 +6,8 @@ TagManager:
   tags:
   - houseEnter
   - coridor
+  - bed
+  - tv
   layers:
   - Default
   - TransparentFX

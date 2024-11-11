@@ -70,7 +70,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void SetText(string newText, float typingSpeed = 0.05f, float delayClean = 1f)
     {
-        gameObject.SetActive(true);
+        this.transform.gameObject.SetActive(true);
         this.typingSpeed = typingSpeed;
         this.delayClean = delayClean;
         this.fullText = newText; // Обновляем полный текст

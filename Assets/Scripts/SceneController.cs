@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
@@ -17,6 +18,11 @@ public class SceneController : MonoBehaviour
     public void NextScene()
     {
         StartCoroutine(Load());
+    }
+
+    public void Sleep1()
+    {
+        panelAnimator.SetTrigger("Sleep 1");
     }
 
     private IEnumerator Load()

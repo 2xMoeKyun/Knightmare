@@ -23,7 +23,9 @@ public class DialogueStart : MonoBehaviour
         {
             case "houseEnter":
                 houseEnter();
-
+                break;
+            case "coridor":
+                houseEnter();
                 break;
         }
     }
@@ -35,10 +37,25 @@ public class DialogueStart : MonoBehaviour
             case "houseEnter":
                 if (Input.GetKey(KeyCode.E))
                     SceneController.instance.NextScene();
-                print("Enter");
-            break;
+                break;
+            case "coridor":
+                if (Input.GetKey(KeyCode.E))
+                    SceneController.instance.NextScene();
+                break;
         }
 
+    }
+
+    private void Coridor()
+    {
+
+        if (isTyping)
+            return;
+        isTyping = true;
+
+        dt.SetText("Click E to enter home", delayClean: 5f);
+
+        isTyping = false;
     }
 
     private void houseEnter()
@@ -48,7 +65,7 @@ public class DialogueStart : MonoBehaviour
             return;
         isTyping = true;
 
-        dt.SetText("Click E to enter home", delayClean: 5f);
+        dt.SetText("Click E to enter House", delayClean: 5f);
 
         isTyping = false;
     }

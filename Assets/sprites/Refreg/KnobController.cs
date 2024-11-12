@@ -20,11 +20,17 @@ public class KnobController : MonoBehaviour
         Cursor.visible = true;
     }
 
+    private void OnDestroy()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = false;
+    }
+
     void Update()
     {
-        print(knobPoints);
         if (knobPoints == 3)
         {
+            PlayerTriggers.isFreezer = true;
             SceneManager.LoadScene("Living shroom");
         }
 

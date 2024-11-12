@@ -6,14 +6,15 @@ using System.Net.NetworkInformation;
 using UnityEngine.EventSystems;
 using System;
 
-public class DialogueStart : MonoBehaviour
+public class PlayerTriggers : MonoBehaviour
 {
     public DialogueTrigger dt;
     public TiredScaleTrigger tsTrigger;
 
-    private bool isSleep1;
+    private bool isSleep1 = true;//!!
 
     private bool isTyping = false;
+    public static bool isFreezer = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -88,7 +89,7 @@ public class DialogueStart : MonoBehaviour
                     break;
             case "enterLiving":
                 if (Input.GetKey(KeyCode.E))
-                    SceneController.instance.LoadSceneByName(isSleep1 ? "Shroom Hallway" : "Living room");
+                    SceneController.instance.LoadSceneByName(isSleep1 ? "Living shroom" : "Living room");
                 break;
             case "enterBed":
                 if (Input.GetKey(KeyCode.E))
@@ -100,16 +101,23 @@ public class DialogueStart : MonoBehaviour
                 break;
             case "leaveLiving":
                 if (Input.GetKey(KeyCode.E))
-                    SceneController.instance.LoadSceneByName("Home Hallway");
+                    SceneController.instance.LoadSceneByName(isSleep1 ? "Shroom Hallway" : "Home Hallway");
                 break;
             case "refreg":
                 if (Input.GetKey(KeyCode.E))
                 {
                     SceneController.instance.LoadSceneByName("Refreg");
-
+                    collision.gameObject.SetActive(false);
                 }
-
                 break;
+        }
+        if(isFreezer && collision.CompareTag("cut1"))
+        {
+            PlayerController.isAbleMove = false;
+            isFreezer = false;
+
+            tsTrigger.TakeTire(15f);
+            CoroutineTemplate("Cut1");
         }
 
     }
@@ -146,9 +154,6 @@ public class DialogueStart : MonoBehaviour
         isTyping = false;
     }
 
-
-
-
     private IEnumerator WakeOutput()
     {
         if (isTyping)
@@ -165,5 +170,22 @@ public class DialogueStart : MonoBehaviour
         isTyping = false;
     }
 
+    private IEnumerator Cut1()
+    {
+        if (isTyping)
+            yield return 0;
+        isTyping = true;
 
+        dt.SetText("*Took the medicine*", delayClean: 2.5f);
+        yield return new WaitForSeconds(3f);
+        dt.SetText("Oh my god..", typingSpeed: 0.1f, delayClean: 2.5f);
+        yield return new WaitForSeconds(3f);
+        dt.SetText("A little bit better", typingSpeed: 0.05f, delayClean: 2f);
+        yield return new WaitForSeconds(3f);
+        dt.SetText("I have to go to the <color=#FFFF00>pharmacy</color>", typingSpeed: 0.05f, delayClean: 2f);
+        yield return new WaitForSeconds(4f);
+
+        PlayerController.isAbleMove = true;
+        isTyping = false;
+    }
 }

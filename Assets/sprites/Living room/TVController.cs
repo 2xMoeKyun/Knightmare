@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class TVController : MonoBehaviour
@@ -12,6 +12,9 @@ public class TVController : MonoBehaviour
             case "tv":
                 CoroutineTemplate("TVOutput");
                 break;
+            case "tvshroom":
+                CoroutineTemplate("TVShroomOutput");
+                break;
         }
     }
 
@@ -22,9 +25,24 @@ public class TVController : MonoBehaviour
 
     }
 
+    private IEnumerator TVShroomOutput()
+    {
+        dt.SetText("ᔑ ʖ ᓵ ↸ ᒷ ⎓ ╎ ⋮ ⊣ ⍑ ╎リ↸", delayClean: 0.5f);
+        yield return new WaitForSeconds(2f);
+        dt.SetText("!¡ᒷ ||ᔑ∷↸リ∴∴リ ↸⍑ᔑリᒷ", delayClean: 2f);
+        yield return new WaitForSeconds(6f);
+        dt.SetText("⍑∷ᔑ ᓭ↸ ∴ᒲ╎ℸ リℸリ∷ᔑ ᓭ!", delayClean: 2f);
+        yield return new WaitForSeconds(6f);
+        dt.SetText("リᔑℸ∷ ╎ᓭ リリᓭリ∷リ ⍑リリ", delayClean: 0.8f);
+        yield return new WaitForSeconds(2f);
+        dt.SetText("⊣リ⍑ ⊣ᓭ⍑リリ ℸᒷリᔑ⊣", delayClean: 0.5f);
+        yield return new WaitForSeconds(2f);
+        dt.SetText("⊣リ⍑ ⊣ᓭ⍑リリ ℸᒷリᔑ⊣", delayClean: 0.5f);
+
+    }
+
     private IEnumerator TVOutput()
     {
-
         dt.SetText("Bla-bla-bla", delayClean: 0.5f);
         yield return new WaitForSeconds(2f);
         dt.SetText("A suspicious man resembling \n a knight was spotted today", delayClean: 2f);

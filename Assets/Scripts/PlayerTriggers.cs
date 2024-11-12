@@ -49,6 +49,9 @@ public class DialogueStart : MonoBehaviour
             case "leaveBed":
                 TextTemplate("E to leave bedroom");
                 break;
+            case "refreg":
+                TextTemplate("Take the medicines");
+                break;
         }
     }
 
@@ -70,6 +73,7 @@ public class DialogueStart : MonoBehaviour
                     SceneController.instance.Sleep1();
                     collision.gameObject.SetActive(false);
                     PlayerController.isAbleMove = false;
+                    isSleep1 = true;
 
                     StartCoroutine(Sleep1Cut());
                 }
@@ -84,7 +88,7 @@ public class DialogueStart : MonoBehaviour
                     break;
             case "enterLiving":
                 if (Input.GetKey(KeyCode.E))
-                    SceneController.instance.LoadSceneByName("Living room");
+                    SceneController.instance.LoadSceneByName(isSleep1 ? "Shroom Hallway" : "Living room");
                 break;
             case "enterBed":
                 if (Input.GetKey(KeyCode.E))
@@ -92,11 +96,19 @@ public class DialogueStart : MonoBehaviour
                 break;
             case "leaveBed":
                 if (Input.GetKey(KeyCode.E))
-                    SceneController.instance.LoadSceneByName("Home Hallway");
+                    SceneController.instance.LoadSceneByName(isSleep1? "Shroom Hallway" : "Home Hallway");
                 break;
             case "leaveLiving":
                 if (Input.GetKey(KeyCode.E))
                     SceneController.instance.LoadSceneByName("Home Hallway");
+                break;
+            case "refreg":
+                if (Input.GetKey(KeyCode.E))
+                {
+                    SceneController.instance.LoadSceneByName("Refreg");
+
+                }
+
                 break;
         }
 

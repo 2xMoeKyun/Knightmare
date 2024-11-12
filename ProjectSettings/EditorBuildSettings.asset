@@ -23,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Home Hallway.unity
     guid: c8aceacaa0d8a044988eaccbdf95053f
+  - enabled: 1
+    path: Assets/Scenes/Shroom coridor.unity
+    guid: 4e79c2ba8b27eeb43900900eb52e095c
+  - enabled: 1
+    path: Assets/Scenes/Shroom Hallway.unity
+    guid: 2f894389166b88746a56445dd85585f7
+  - enabled: 1
+    path: Assets/Scenes/Refreg.unity
+    guid: d50fa8701786abd49903f5ce7e2a0f46
+  - enabled: 1
+    path: Assets/Scenes/Living shroom.unity
+    guid: 917fec7b1ae74ab429d0afd9d90cd305
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

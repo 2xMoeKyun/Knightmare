@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 927143697}
   m_Layer: 0
   m_Name: WakeUpTrigger
-  m_TagString: wake
+  m_TagString: leaveBed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -792,7 +792,7 @@ Transform:
   m_GameObject: {fileID: 927143695}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.27, y: -0.51, z: 0}
+  m_LocalPosition: {x: -2.92, y: -0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,7 +832,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.37261772, y: 0.00000047683716}
+  m_Offset: {x: -0.0059509277, y: 0.6760125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -842,7 +842,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.991146, y: 3.186019}
+  m_Size: {x: 1.2415314, y: 4.538043}
   m_EdgeRadius: 0
 --- !u!1 &1141601484
 GameObject:
@@ -1339,7 +1339,7 @@ GameObject:
   - component: {fileID: 1743664778}
   m_Layer: 0
   m_Name: Confiner
-  m_TagString: Untagged
+  m_TagString: wake
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

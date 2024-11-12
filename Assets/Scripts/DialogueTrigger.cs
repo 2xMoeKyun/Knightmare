@@ -13,12 +13,13 @@ public class DialogueTrigger : MonoBehaviour
 
     public TextMeshProUGUI textComponent;
     private string fullText; // Полный текст, который нужно вывести
-
+    private Image DialogueActive;
 
     private void Start()
     {
         fullText = textComponent.text; // Сохраняем полный текст
         textComponent.text = ""; // Очищаем текст перед печатанием
+        DialogueActive = GetComponent<Image>();
     }
 
     private void FixedUpdate()
@@ -64,13 +65,13 @@ public class DialogueTrigger : MonoBehaviour
         }
         textComponent.text = fullText.Substring(0, 0);// gavno kod :(
 
-        gameObject.SetActive(false);
+        DialogueActive.color = new Color(0, 0, 0, 0);
     }
 
 
     public void SetText(string newText, float typingSpeed = 0.05f, float delayClean = 1f)
     {
-        this.transform.gameObject.SetActive(true);
+        DialogueActive.color = new Color(0, 0, 0, 1);
         this.typingSpeed = typingSpeed;
         this.delayClean = delayClean;
         this.fullText = newText; // Обновляем полный текст

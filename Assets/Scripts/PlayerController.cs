@@ -13,12 +13,15 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private bool isFacingRight = true;
 
+    public static bool isAbleMove = true;
 
     void Update()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         //float moveX = Input.GetKey(KeyCode.D) ? 1.0f : (Input.GetKey(KeyCode.A) ? -1.0f : 0f);
         moveInput = new Vector2(moveX, 0f).normalized;
+        if (!PlayerController.isAbleMove)
+            moveInput = Vector2.zero;
     }
 
 

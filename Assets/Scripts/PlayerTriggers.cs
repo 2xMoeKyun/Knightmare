@@ -13,14 +13,7 @@ public class DialogueStart : MonoBehaviour
 
     private bool isSleep1;
 
-
     private bool isTyping = false;
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //StartCoroutine(Output());
-        tsTrigger.TakeTire(15f);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,15 +25,17 @@ public class DialogueStart : MonoBehaviour
             case "coridor":
                 TextTemplate("E to enter home");
                 break;
-            
+            case "leaveCoridor":
+                TextTemplate("E to leave");
+                break;
+            case "exitToCoridor":
+                TextTemplate("E to leave");
+                break;
             case "bed":
                 TextTemplate("E to fall a sleep");
                 break;
             case "wake":
                 CoroutineTemplate("WakeOutput");
-                break;
-            case "exitToCoridor":
-                TextTemplate("E to leave");
                 break;
             case "enterLiving":
                 TextTemplate("E to enter living room");
@@ -69,18 +64,23 @@ public class DialogueStart : MonoBehaviour
                 if (Input.GetKey(KeyCode.E))
                     SceneController.instance.LoadSceneByName("Home Hallway");
                 break;
-            case "bed":
+            case "bed": // cut scene
                 if (Input.GetKey(KeyCode.E))
                 {
                     SceneController.instance.Sleep1();
                     collision.gameObject.SetActive(false);
                     PlayerController.isAbleMove = false;
+
                     StartCoroutine(Sleep1Cut());
                 }
                 break;
             case "exitToCoridor":
                 if (Input.GetKey(KeyCode.E))
                     SceneController.instance.LoadSceneByName("Coridor");
+                    break;
+            case "leaveCoridor":
+                if (Input.GetKey(KeyCode.E))
+                    SceneController.instance.LoadSceneByName("Street");
                     break;
             case "enterLiving":
                 if (Input.GetKey(KeyCode.E))
@@ -106,6 +106,8 @@ public class DialogueStart : MonoBehaviour
     private IEnumerator Sleep1Cut()
     {
         yield return new WaitForSeconds(7f);
+        tsTrigger.GetTire(30f);
+
         PlayerController.isAbleMove = true;
         SceneController.instance.NextScene();
     }

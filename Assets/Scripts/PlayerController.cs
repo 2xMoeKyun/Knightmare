@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public static bool isAbleMove = true;
 
+
     void Update()
     {
         float moveX = Input.GetAxisRaw("Horizontal");

@@ -4,7 +4,11 @@ using UnityEngine.UI;
 public class TiredScaleTrigger : MonoBehaviour
 {
     public Image scale;
-    public float scaleAmount = 100f;
+    public static float scaleAmount = 30f;
+    private void Start()
+    {
+        scale.fillAmount = scaleAmount / 100f;
+    }
 
 
     public void TakeTire(float tirednress)

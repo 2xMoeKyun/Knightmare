@@ -9,6 +9,11 @@ TagManager:
   - bed
   - tv
   - wake
+  - exitToCoridor
+  - enterLiving
+  - enterBed
+  - leaveLiving
+  - leaveBed
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine.EventSystems;
+using System;
 
 public class DialogueStart : MonoBehaviour
 {
@@ -26,19 +27,32 @@ public class DialogueStart : MonoBehaviour
         switch (collision.transform.tag)
         {
             case "houseEnter":
-                houseEnter();
+                TextTemplate("E to enter House");
                 break;
             case "coridor":
-                Coridor();
+                TextTemplate("E to enter home");
                 break;
-            case "tv":
-                TV(); 
-                break;
+            
             case "bed":
-                Bed();
+                TextTemplate("E to fall a sleep");
                 break;
             case "wake":
-                Wake();
+                CoroutineTemplate("WakeOutput");
+                break;
+            case "exitToCoridor":
+                TextTemplate("E to leave");
+                break;
+            case "enterLiving":
+                TextTemplate("E to enter living room");
+                break;
+            case "leaveLiving":
+                TextTemplate("E to leave living room");
+                break;
+            case "enterBed":
+                TextTemplate("E to enter bedroom");
+                break;
+            case "leaveBed":
+                TextTemplate("E to leave bedroom");
                 break;
         }
     }
@@ -49,11 +63,11 @@ public class DialogueStart : MonoBehaviour
         {
             case "houseEnter":
                 if (Input.GetKey(KeyCode.E))
-                    SceneController.instance.NextScene();
+                    SceneController.instance.LoadSceneByName("Coridor");
                 break;
             case "coridor":
                 if (Input.GetKey(KeyCode.E))
-                    SceneController.instance.NextScene();
+                    SceneController.instance.LoadSceneByName("Home Hallway");
                 break;
             case "bed":
                 if (Input.GetKey(KeyCode.E))
@@ -63,6 +77,26 @@ public class DialogueStart : MonoBehaviour
                     PlayerController.isAbleMove = false;
                     StartCoroutine(Sleep1Cut());
                 }
+                break;
+            case "exitToCoridor":
+                if (Input.GetKey(KeyCode.E))
+                    SceneController.instance.LoadSceneByName("Coridor");
+                    break;
+            case "enterLiving":
+                if (Input.GetKey(KeyCode.E))
+                    SceneController.instance.LoadSceneByName("Living room");
+                break;
+            case "enterBed":
+                if (Input.GetKey(KeyCode.E))
+                    SceneController.instance.LoadSceneByName("Bed room");
+                break;
+            case "leaveBed":
+                if (Input.GetKey(KeyCode.E))
+                    SceneController.instance.LoadSceneByName("Home Hallway");
+                break;
+            case "leaveLiving":
+                if (Input.GetKey(KeyCode.E))
+                    SceneController.instance.LoadSceneByName("Home Hallway");
                 break;
         }
 
@@ -76,62 +110,30 @@ public class DialogueStart : MonoBehaviour
         SceneController.instance.NextScene();
     }
 
-    private void Wake()
+    private void TextTemplate(string text)
     {
         if (isTyping)
             return;
         isTyping = true;
 
-        StartCoroutine(WakeOutput());
+        dt.SetText(text, delayClean: 5f);
 
         isTyping = false;
     }
 
-    private void TV()
+    private void CoroutineTemplate(string coroutineName)
     {
         if (isTyping)
             return;
         isTyping = true;
 
-        StartCoroutine(TVOutput());
+        StartCoroutine(coroutineName);
 
         isTyping = false;
     }
 
-    private void Bed()
-    {
-        if (isTyping)
-            return;
-        isTyping = true;
 
-        dt.SetText("E to fall a sleep", delayClean: 5f);
 
-        isTyping = false;
-    }
-
-    private void Coridor()
-    {
-
-        if (isTyping)
-            return;
-        isTyping = true;
-
-        dt.SetText("E to enter home", delayClean: 5f);
-
-        isTyping = false;
-    }
-
-    private void houseEnter()
-    {
-
-        if (isTyping)
-            return;
-        isTyping = true;
-
-        dt.SetText("E to enter House", delayClean: 5f);
-
-        isTyping = false;
-    }
 
     private IEnumerator WakeOutput()
     {
@@ -149,25 +151,5 @@ public class DialogueStart : MonoBehaviour
         isTyping = false;
     }
 
-    private IEnumerator TVOutput()
-    {
-        if (isTyping)
-            yield return 0;
-        isTyping = true;
 
-
-        dt.SetText("Bla-bla-bla", delayClean: 0.5f);
-        yield return new WaitForSeconds(2f);
-        dt.SetText("A suspicious man resembling \n a knight was spotted today", delayClean: 2f);
-        yield return new WaitForSeconds(6f);
-        dt.SetText("Witnesses claim to have seen \nhim at the pharmacy", delayClean: 2f);
-        yield return new WaitForSeconds(6f);
-        dt.SetText("further in the news", delayClean: 0.8f);
-        yield return new WaitForSeconds(2f);
-        dt.SetText("Bla-bla-bla", delayClean: 0.5f);
-        yield return new WaitForSeconds(2f);
-        dt.SetText("Bla-bla-bla", delayClean: 0.5f);
-
-        isTyping = false;
-    }
 }

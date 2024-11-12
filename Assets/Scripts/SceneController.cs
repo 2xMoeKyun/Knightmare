@@ -20,6 +20,11 @@ public class SceneController : MonoBehaviour
         StartCoroutine(Load());
     }
 
+    public void LoadSceneByName(string name)
+    {
+        StartCoroutine(LoadByName(name));
+    }
+
     public void Sleep1()
     {
         panelAnimator.SetTrigger("Sleep 1");
@@ -33,5 +38,13 @@ public class SceneController : MonoBehaviour
 
     }
 
-  
+    private IEnumerator LoadByName(string name)
+    {
+        panelAnimator.SetTrigger("End");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(name);
+
+    }
+
+
 }

@@ -35,6 +35,7 @@ public class KnobController : MonoBehaviour
         }
 
         float AxisY = ((Input.mousePosition.y - lastMousepos.y) / Time.deltaTime) / Screen.height;
+        float AxisX = ((Input.mousePosition.x - lastMousepos.x) / Time.deltaTime) / Screen.height;
         lastMousepos = Input.mousePosition;
         if (!isMouseDown) {
             motor.motorSpeed = Mathf.Lerp(motor.motorSpeed, -20, 10f);

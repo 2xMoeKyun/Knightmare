@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Remove-bg.ai_1731393849781_0: 4374254197408499481
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

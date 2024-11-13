@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wacky_door_T_0: -922121217301480348
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

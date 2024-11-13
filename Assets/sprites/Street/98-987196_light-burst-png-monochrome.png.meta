@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      98-987196_light-burst-png-monochrome_0: -7275904524954109549
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

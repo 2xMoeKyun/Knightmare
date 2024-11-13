@@ -7,6 +7,7 @@ public class DogController : MonoBehaviour
     public float detectionRange = 10f; // Радиус, в котором собака начинает преследовать
     public float speed = 5f;          // Скорость собаки
     private bool isChasing = false;   // Флаг, отслеживающий, преследует ли собака
+    private bool dogCounter = false;
 
     private void Update()
     {
@@ -30,7 +31,8 @@ public class DogController : MonoBehaviour
         Vector2 direction = (player.position - transform.position).normalized;
 
         // Двигаем собаку в сторону игрока
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        if(!dogCounter)
+            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
 
 
         // Поворачиваем спрайт собаки в сторону игрока
@@ -45,6 +47,14 @@ public class DogController : MonoBehaviour
         if (collision.transform.CompareTag(player.tag))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("dogCounter"))
+        {
+            dogCounter = true;
         }
     }
 

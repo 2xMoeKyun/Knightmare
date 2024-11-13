@@ -35,6 +35,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Living shroom.unity
     guid: 917fec7b1ae74ab429d0afd9d90cd305
+  - enabled: 1
+    path: Assets/Scenes/Shroom street.unity
+    guid: ce5aaa267a8ed2c439c5f0c966ef0b63
+  - enabled: 1
+    path: Assets/Scenes/Final scene.unity
+    guid: a846eb098cd200946a85d27b4f935adb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

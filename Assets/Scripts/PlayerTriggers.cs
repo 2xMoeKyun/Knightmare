@@ -11,7 +11,7 @@ public class PlayerTriggers : MonoBehaviour
     public DialogueTrigger dt;
     public TiredScaleTrigger tsTrigger;
 
-    private bool isSleep1 = false;//!!
+    private static bool isSleep1 = false;//!!
 
     private bool isTyping = false;
     public static bool isFreezer = false;
@@ -54,6 +54,9 @@ public class PlayerTriggers : MonoBehaviour
                 break;
             case "refreg":
                 TextTemplate("Take the medicines");
+                break;
+            case "sleep":
+                TextTemplate("E to fall a sleep");
                 break;
         }
     }
@@ -112,6 +115,13 @@ public class PlayerTriggers : MonoBehaviour
                     collision.gameObject.SetActive(false);
                 }
                 break;
+            case "sleep":
+                if (Input.GetKey(KeyCode.E))
+                {
+                    collision.gameObject.SetActive(false);
+                    SceneController.instance.FinalSleep();
+                }
+                break;
         }
         if(isFreezer && collision.CompareTag("cut1"))
         {
@@ -127,7 +137,7 @@ public class PlayerTriggers : MonoBehaviour
             collision.gameObject.SetActive(false);
             PlayerController.isAbleMove = false;
             SceneController.instance.Cut3();
-            tsTrigger.GetTire(60f);
+            tsTrigger.TakeTire(100f);
             
         }
     }
@@ -136,7 +146,7 @@ public class PlayerTriggers : MonoBehaviour
     private IEnumerator Sleep1Cut()
     {
         yield return new WaitForSeconds(7f);
-        tsTrigger.GetTire(30f);
+        tsTrigger.GetTire(60f);
 
         PlayerController.isAbleMove = true;
         SceneController.instance.LoadSceneByName("Bed shroom");

@@ -19,6 +19,9 @@ TagManager:
   - refreg
   - cut1
   - cut2
+  - Dog
+  - cut3
+  - sleep
   layers:
   - Default
   - TransparentFX

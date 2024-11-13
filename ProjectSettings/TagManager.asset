@@ -18,6 +18,7 @@ TagManager:
   - tvshroom
   - refreg
   - cut1
+  - cut2
   layers:
   - Default
   - TransparentFX

@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class OpenHallwayDoor : MonoBehaviour
 {
-    public static OpenHallwayDoor Instance;
-    private void Start()
-    {
-        Instance = this;
-    }
+    public GameObject target;
 
-    public void SetActiveDoor(bool set)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.gameObject.SetActive(set);
+        if (PlayerTriggers.isGoingOut && collision.CompareTag("cut2"))
+        {
+            PlayerTriggers.isGoingOut = false;
+            target.SetActive(true);
+        }
     }
 }

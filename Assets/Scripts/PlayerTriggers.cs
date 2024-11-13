@@ -11,10 +11,12 @@ public class PlayerTriggers : MonoBehaviour
     public DialogueTrigger dt;
     public TiredScaleTrigger tsTrigger;
 
-    private bool isSleep1 = true;//!!
+    private bool isSleep1 = false;//!!
 
     private bool isTyping = false;
     public static bool isFreezer = false;
+    public static bool isGoingOut = false;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -66,7 +68,19 @@ public class PlayerTriggers : MonoBehaviour
                 break;
             case "coridor":
                 if (Input.GetKey(KeyCode.E))
-                    SceneController.instance.LoadSceneByName("Home Hallway");
+                    SceneController.instance.LoadSceneByName(isSleep1 ? "Shroom Hallway" : "Home Hallway");
+                break;
+            case "exitToCoridor":
+                if (Input.GetKey(KeyCode.E))
+                    SceneController.instance.LoadSceneByName(isSleep1 ? "Shroom coridor" : "Coridor");
+                    break;
+            case "leaveCoridor":
+                if (Input.GetKey(KeyCode.E))
+                    SceneController.instance.LoadSceneByName(isSleep1 ? "Shroom street" : "Street");
+                    break;
+            case "enterLiving":
+                if (Input.GetKey(KeyCode.E))
+                    SceneController.instance.LoadSceneByName(isSleep1 ? "Living shroom" : "Living room");
                 break;
             case "bed": // cut scene
                 if (Input.GetKey(KeyCode.E))
@@ -78,18 +92,6 @@ public class PlayerTriggers : MonoBehaviour
 
                     StartCoroutine(Sleep1Cut());
                 }
-                break;
-            case "exitToCoridor":
-                if (Input.GetKey(KeyCode.E))
-                    SceneController.instance.LoadSceneByName("Coridor");
-                    break;
-            case "leaveCoridor":
-                if (Input.GetKey(KeyCode.E))
-                    SceneController.instance.LoadSceneByName("Street");
-                    break;
-            case "enterLiving":
-                if (Input.GetKey(KeyCode.E))
-                    SceneController.instance.LoadSceneByName(isSleep1 ? "Living shroom" : "Living room");
                 break;
             case "enterBed":
                 if (Input.GetKey(KeyCode.E))
@@ -115,11 +117,12 @@ public class PlayerTriggers : MonoBehaviour
         {
             PlayerController.isAbleMove = false;
             isFreezer = false;
+            isGoingOut = true;
 
             tsTrigger.TakeTire(15f);
             CoroutineTemplate("Cut1");
         }
-
+        
     }
 
 

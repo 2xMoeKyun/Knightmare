@@ -22,5 +22,9 @@ public class CarController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        if (other.CompareTag("Dog"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

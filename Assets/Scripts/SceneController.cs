@@ -46,5 +46,11 @@ public class SceneController : MonoBehaviour
 
     }
 
+    public void Cut3()
+    {
+        panelAnimator.SetTrigger("Cut3");
+
+    }
+
 
 }

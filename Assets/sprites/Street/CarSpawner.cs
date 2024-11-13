@@ -23,7 +23,7 @@ public class CarSpawner : MonoBehaviour
             Transform randomSpawn = spawnPoints[Random.Range(trimIndex, points.Count+trimIndex)];
 
             randomSpawn.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.8f);
             GameObject car = Instantiate(randomCar, randomSpawn.position, randomCar.transform.rotation);
             randomSpawn.gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0);
 

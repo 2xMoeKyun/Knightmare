@@ -122,7 +122,14 @@ public class PlayerTriggers : MonoBehaviour
             tsTrigger.TakeTire(15f);
             CoroutineTemplate("Cut1");
         }
-        
+        if (collision.CompareTag("cut3"))
+        {
+            collision.gameObject.SetActive(false);
+            PlayerController.isAbleMove = false;
+            SceneController.instance.Cut3();
+            tsTrigger.GetTire(60f);
+            
+        }
     }
 
 
@@ -132,7 +139,7 @@ public class PlayerTriggers : MonoBehaviour
         tsTrigger.GetTire(30f);
 
         PlayerController.isAbleMove = true;
-        SceneController.instance.NextScene();
+        SceneController.instance.LoadSceneByName("Bed shroom");
     }
 
     private void TextTemplate(string text)
